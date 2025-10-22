@@ -1,14 +1,16 @@
 package com.examen.back2.models;
+import com.examen.back2.assistance.Estado;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table (name = "Registro")
 public class Registro {
@@ -21,18 +23,21 @@ public class Registro {
     private String solucion;
     @Column (name="fechaIngreso", nullable = false, unique = false, length = 30)
     private LocalDate fechaIngreso;
+    @Enumerated (EnumType.STRING)
+    @Column (name = "estado", nullable = false, unique = false)
+    private Estado estado;
 
-    //Claves foraneas; relacion uno a muchos.
+    //Claves foraneas; relacion uno a muchos, lado M
     @ManyToOne
     @JoinColumn (name = "cliente_id", nullable = false)
     private Cliente cliente;
-
     @ManyToOne
     @JoinColumn (name = "tecnico_id", nullable = false)
     private Tecnico tecnico;
-
     @ManyToOne
     @JoinColumn (name ="equipo_id", nullable = false)
     private Equipo equipo;
-
+    @OneToOne(mappedBy = "registro")
+    @JsonBackReference(value = "relacionfacturaregistro")
+    private Factura factura;
 }

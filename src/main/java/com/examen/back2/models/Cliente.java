@@ -1,13 +1,13 @@
 package com.examen.back2.models;
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table (name = "Cliente")
 public class Cliente {
@@ -22,7 +22,9 @@ public class Cliente {
     private String Documento;
     @Column(name="numeroCelular", nullable = false, unique = true, length = 12)
     private String numeroCelular;
-
-    //Relaciones:
-
+    //relacion Cliente-Registro (1-M) lado 1
+    private List<Registro> registros;
+    //relacion Cliente-Equipo (1-M)
+    @OneToMany (mappedBy = "cliente")
+    private Equipo equipo;
 }

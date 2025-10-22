@@ -1,10 +1,10 @@
 package com.examen.back2.models;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
+import java.util.List;
+@Getter
+@Setter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +22,15 @@ public class Equipo {
     private String tipo;
     @Column (name="numeroSerie", nullable = false, unique = true, length = 30)
     private String numeroSerie;
+    //relacion Equipo-Registro (1-M) lado 1
+    private List<Registro>registros;
+    //relacion Equipo-Cliente (N-1)
+    @ManyToOne
+    @JoinColumn(name ="fk_cliente", referencedColumnName = "id")
+    private Cliente cliente;
+    //Relacion Equipo_Tecnico (M-1)
+    @ManyToOne
+    @JoinColumn(name = "fk_tecnico", referencedColumnName = "id")
+    @JsonManagedReference(value ="relacionequipotecnico")
+    private Tecnico tecnico;
 }
