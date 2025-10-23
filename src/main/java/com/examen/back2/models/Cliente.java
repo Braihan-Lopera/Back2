@@ -1,13 +1,12 @@
 package com.examen.back2.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table (name = "Cliente")
 public class Cliente {
@@ -18,13 +17,13 @@ public class Cliente {
     private String nombre;
     @Column(name="correo", nullable = false, unique = true, length = 50)
     private String correo;
-    @Column(name="Documento", nullable = false, unique = true, length = 10)
-    private String Documento;
+    @Column(name="documento", nullable = false, unique = true, length = 10)
+    private String documento;
     @Column(name="numeroCelular", nullable = false, unique = true, length = 12)
     private String numeroCelular;
-    //relacion Cliente-Registro (1-M) lado 1
-    private List<Registro> registros;
-    //relacion Cliente-Equipo (1-M)
+
+    //relacion Cliente-Equipo (1-N) lado 1
     @OneToMany (mappedBy = "cliente")
-    private Equipo equipo;
+    @JsonManagedReference (value="relacionequipocliente")
+    private List<Equipo> equipo;
 }

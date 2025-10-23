@@ -8,6 +8,6 @@ import java.util.Optional;
 @Repository
 public interface RepositorioCliente extends JpaRepository<Cliente, Integer> {
     Optional<Cliente> findById(Integer id);
-    List<Cliente> findByDocumento(Integer documento);
+    List<Cliente> findByDocumento(String documento);
     Optional<Cliente>findByCorreo(String correo);
 }

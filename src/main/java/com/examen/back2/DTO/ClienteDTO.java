@@ -3,11 +3,12 @@ import com.examen.back2.models.Equipo;
 import com.examen.back2.models.Registro;
 import lombok.*;
 import java.util.List;
+
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class ClienteDTO {
     private String nombre;
     private String correo;

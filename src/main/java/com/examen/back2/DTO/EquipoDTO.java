@@ -6,8 +6,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+
 public class EquipoDTO {
     private Integer id;
     private String marca;

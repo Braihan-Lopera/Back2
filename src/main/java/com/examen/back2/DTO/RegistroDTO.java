@@ -12,8 +12,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+
 public class RegistroDTO {
     private Integer id;
     private String problema;

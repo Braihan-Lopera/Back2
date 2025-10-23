@@ -7,8 +7,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+
 public class FacturaDTO {
     private Integer id;
     private LocalDate fechaEmision;

@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table (name = "Factura")
 public class Factura {
@@ -25,9 +25,10 @@ public class Factura {
     private String metodoPago;
     @Column (name="total", nullable = false, unique = false, length = 30)
     private Float total;
-    //claves foraneas; relacion 1-1
+
+    //relacion Registro-Factura (1-1)
     @OneToOne
-    @JoinColumn (name = "fk_registro", referencedColumnName = "id")
-    @JsonManagedReference(value = "relacionfacturaregistro")
+    @JoinColumn(name ="fk_registro")
     private Registro registro;
+
 }
