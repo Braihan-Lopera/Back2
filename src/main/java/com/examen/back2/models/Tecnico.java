@@ -27,6 +27,6 @@ public class Tecnico {
 
     //relacion Tecnico_Registro (1-N) lado 1
     @OneToMany(mappedBy = "tecnico")
-    @JsonBackReference
+    @JsonManagedReference (value ="relaciontecnicoregistro")
     private List<Registro>registros;
 }

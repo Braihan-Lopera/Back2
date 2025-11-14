@@ -24,10 +24,10 @@ public class Equipo {
     //relacion Cliente-Equipo(1-N) lado N
     @ManyToOne
     @JoinColumn(name="fk_cliente")
-    @JsonBackReference
+    @JsonBackReference(value = "relacionequipocliente")
     private Cliente cliente;
     //relacion Equipo-Registro (1-N) lado 1
     @OneToMany(mappedBy = "equipo")
-    @JsonManagedReference
+    @JsonManagedReference (value ="relacionequiporegistro")
     private List<Registro> registros;
 }

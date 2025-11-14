@@ -20,23 +20,26 @@ public class Registro {
     private String problema;
     @Column(name = "solucion", nullable = false, unique = false, length = 120)
     private String solucion;
-    @Column(name = "fechaIngreso", nullable = false, unique = false, length = 30)
+    @Column(name = "fechaIngreso", nullable = false, unique = false)
     private LocalDate fechaIngreso;
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false, unique = false)
     private Estado estado;
+
     //relacion Equipo-Registro (1-N) lado N
     @ManyToOne
     @JoinColumn(name="fk_equipo")
-    @JsonBackReference
+    @JsonBackReference (value = "relacionregistroequipo")
     private Equipo equipo;
+
     //relacion Tecnico-Registro (1-N) lado N
     @ManyToOne
     @JoinColumn(name ="fk_tecnico")
-    @JsonBackReference
+    @JsonBackReference(value = "relacionregistrotecnico")
     private Tecnico tecnico;
+
     //relacion Registro-Factura (1-1)
     @OneToOne(mappedBy = "registro")
-    @JsonManagedReference
+    @JsonManagedReference (value = "relacionregistrofactura")
     private Factura factura;
 }

@@ -1,4 +1,5 @@
 package com.examen.back2.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,7 +18,7 @@ public class Factura {
     private Integer id;
     @Column (name="fechaEmision", nullable = false, unique = false, length = 30)
     private LocalDate fechaEmision;
-    @Column (name="repuestos", nullable = false, unique = false, length = 30)
+    @Column (name="repuestos", nullable = false, unique = false)
     private String repuestos;
     @Column (name="estadoPago", nullable = false, unique = false, length = 30)
     private String estadoPago;
@@ -27,7 +28,8 @@ public class Factura {
     private Float total;
 
     //relacion Registro-Factura (1-1)
-    @OneToOne
+    @OneToOne (mappedBy = "registro")
+    @JsonBackReference (value ="relacionfacturaregistro")
     @JoinColumn(name ="fk_registro")
     private Registro registro;
 
