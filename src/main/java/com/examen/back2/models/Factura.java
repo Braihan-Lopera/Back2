@@ -28,9 +28,13 @@ public class Factura {
     private Float total;
 
     //relacion Registro-Factura (1-1)
-    @OneToOne (mappedBy = "registro")
+    @OneToOne
     @JsonBackReference (value ="relacionfacturaregistro")
     @JoinColumn(name ="fk_registro")
     private Registro registro;
+
+    @OneToMany(mappedBy = "factura")
+    @JsonManagedReference(value ="relacionfacturaventadetalle")
+    private VentaDetalle ventaDetalle;
 
 }

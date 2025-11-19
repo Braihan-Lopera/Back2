@@ -1,4 +1,5 @@
 package com.examen.back2.models;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,9 +22,13 @@ public class Rol {
     @Column(nullable = false, unique = true, length = 50)
     private String name;
 
-    // Usuarios que tienen este rol (relación inversa, opcional)
-    @ManyToMany(mappedBy = "roles")
-    private Set<Usuario> users;
-
+    @ManyToMany
+    @JoinTable(
+            name = "rol_permisos",
+            joinColumns = @JoinColumn(name = "rol_id"),
+            inverseJoinColumns = @JoinColumn(name = "permiso_id")
+    )
+    @JsonManagedReference(value = "relacionpermisorol")
+    private Set<Permisos> permisos;
     
 }

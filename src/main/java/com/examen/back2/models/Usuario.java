@@ -1,6 +1,10 @@
 package com.examen.back2.models;
 import jakarta.persistence.*;
+import lombok.Data;
 
+import java.util.Set;
+
+@Data
 @Entity
 @Table (name ="Usuario")
 public class Usuario {
@@ -11,8 +15,14 @@ public class Usuario {
     private String userName;
     @Column(name = "contraseña", nullable = false, unique = false, length = 20)
     private String contraseña;
-    @Column (name = "hash", nullable = false, unique = false)
-    private String hash;
     @Column (name ="email", nullable = false, unique = true)
     private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuario_roles",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id")
+    )
+    private Set<Rol> roles;
 }
