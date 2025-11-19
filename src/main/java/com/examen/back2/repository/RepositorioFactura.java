@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface RepositorioFactura extends JpaRepository<Factura, Integer> {
     Optional<Factura>findById(Integer id);
     List<Factura>findByFechaEmision(LocalDate fechaEmision);
+    List<Factura> findByRangoFechas(LocalDate start, LocalDate end);
 }

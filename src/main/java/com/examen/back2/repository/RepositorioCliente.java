@@ -11,4 +11,7 @@ public interface RepositorioCliente extends JpaRepository<Cliente, Integer> {
     List<Cliente> findByDocumento(String documento);
     Optional<Cliente>findByCorreo(String correo);
     List<Cliente>findByNumeroCelular(String numeroCelular);
+    List<Cliente> findByNombreContainingIgnoreCase(String nombre);
+    boolean existsByCorreo(String correo);
+    boolean existsByDocumento(String documento);
 }

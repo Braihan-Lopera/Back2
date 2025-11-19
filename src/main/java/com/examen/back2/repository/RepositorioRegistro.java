@@ -11,4 +11,6 @@ public interface RepositorioRegistro extends JpaRepository<Registro, Integer> {
     Optional<Registro>findById(Integer id);
     List<Registro>findByEstado(Estado estado);
     List<Registro>findByFechaIngreso(LocalDate fechaIngreso);
+    List<Registro> findByFechaIngresoBetween(LocalDate start, LocalDate end);
+    List<Registro> findByEstadoAndFechaIngresoBetween(Estado estado, LocalDate start, LocalDate end);
 }

@@ -1,4 +1,5 @@
 package com.examen.back2.models;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -25,4 +26,7 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "rol_id")
     )
     private Set<Rol> roles;
+    @OneToMany(mappedBy = "Usuario")
+    @JsonManagedReference(value = "relacionusuariotoken")
+    private Token token;
 }

@@ -12,4 +12,5 @@ public interface RepositorioTecnico extends JpaRepository<Tecnico, Integer>{
     List<Tecnico>findByNombre(String nombre);
     List<Tecnico>findByDocumento(String documento);
     Optional<Tecnico>findByCorreo(String correo);
+    Optional<Tecnico> findByCelular(String celular);
 }
