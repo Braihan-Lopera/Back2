@@ -26,4 +26,5 @@ public class Cliente {
     @OneToMany (mappedBy = "cliente")
     @JsonManagedReference (value="relacionequipocliente")
     private List<Equipo> equipos;
+
 }
