@@ -2,6 +2,7 @@ package com.examen.back2.maps;
 
 import com.examen.back2.DTO.RolDTO;
 import com.examen.back2.models.Rol;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -10,4 +11,7 @@ import java.util.List;
 public interface MapaRol {
     RolDTO rolTorolDTO(Rol rol);
     List<RolDTO>listToListDTO(List<Rol> lista);
+
+    @InheritInverseConfiguration
+    Rol rolDTOToRol(RolDTO rolDTO);
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "Productos")
@@ -22,7 +24,7 @@ public class Producto {
     @Column(name = "stock", nullable = false, unique = false)
     private Integer stock;
 
-    @OneToMany (mappedBy = "producto")
-    @JsonManagedReference(value ="relacionproductoventadetalle")
-    private VentaDetalle ventaDetalle;
+    @OneToMany(mappedBy = "producto")
+    @JsonManagedReference(value = "relacionproductoventadetalle")
+    private Set<VentaDetalle> ventaDetalles;
 }

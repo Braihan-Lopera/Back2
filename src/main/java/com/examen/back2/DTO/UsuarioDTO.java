@@ -14,6 +14,7 @@ import java.util.List;
 public class UsuarioDTO {
     private Integer id;
     private String userName;
+    private String contraseña;
     private String email;
-    private List<Rol>roles;
+    private List<Rol> roles;
 }

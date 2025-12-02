@@ -7,16 +7,16 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table (name ="Usuario")
+@Table(name = "Usuario")
 public class Usuario {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "userName", nullable = false, unique = true, length = 20)
     private String userName;
     @Column(name = "contraseña", nullable = false, unique = false, length = 20)
     private String contraseña;
-    @Column (name ="email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -26,7 +26,8 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "rol_id")
     )
     private Set<Rol> roles;
-    @OneToMany(mappedBy = "Usuario")
+    
+    @OneToMany(mappedBy = "usuario")
     @JsonManagedReference(value = "relacionusuariotoken")
-    private Token token;
+    private Set<Token> tokens;
 }
