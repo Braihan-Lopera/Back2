@@ -19,7 +19,7 @@ public class Equipo {
     private String modelo;
     @Column (name="tipo", nullable = false, unique = false, length = 30)
     private String tipo;
-    @Column (name="numeroSerie", nullable = false, unique = true, length = 30)
+    @Column (name ="numeroSerie", nullable = false, unique = true, length = 30)
     private String numeroSerie;
     //relacion Cliente-Equipo(1-N) lado N
     @ManyToOne

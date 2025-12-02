@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 @Data
 @Entity
-@Table(name ="Token")
+@Table(name ="token")
 public class Token{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "Token", nullable = false)
-    private String Token;
+    @Column(name = "token", nullable = false)
+    private String token;
 
     @ManyToOne
     @JoinColumn(name ="fk_Usuario")

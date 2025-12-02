@@ -4,14 +4,16 @@ import com.examen.back2.models.Factura;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+import java.util.List;
+
+@Mapper(componentModel = "spring")
 public interface MapaFactura {
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "fechaEmision", target = "fechaEmision")
-    @Mapping(source = "repuestos", target = "repuestos")
-    @Mapping(source = "estadoPago", target = "estadoPago")
-    @Mapping(source = "metodoPago", target = "metodoPago")
-    @Mapping(source = "total", target = "total")
-    @Mapping(source = "registroDTO", target = "registroDTO")
-    FacturaDTO FacturaToFacturaDTO(Factura factura);
+    @Mapping(source = "registro.id", target = "registroId")
+    FacturaDTO facturaToFacturaDTO(Factura factura);
+    
+    @Mapping(source = "registroId", target = "registro.id")
+    Factura facturaDTOToFactura(FacturaDTO dto);
+    
+    List<FacturaDTO> listaToListDTO(List<Factura> lista);
+    List<Factura> listDTOToLista(List<FacturaDTO> dtos);
 }

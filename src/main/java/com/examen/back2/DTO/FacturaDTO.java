@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class FacturaDTO {
     private Integer id;
     private LocalDate fechaEmision;
@@ -15,5 +14,5 @@ public class FacturaDTO {
     private String estadoPago;
     private String metodoPago;
     private Float total;
-    private RegistroDTO registroDTO;
+    private Integer registroId;
 }

@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VentaDetalleDTO {
     private Integer id;
-    private String cantidad;
-    private float preciounitario;
-    private Integer producto;
-    private Integer factura;
+    private Integer cantidad;
+    private Float precioUnitario;
+    private Integer productoId;
+    private Integer facturaId;
 }

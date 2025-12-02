@@ -8,7 +8,7 @@ import java.util.Optional;
 @Repository
 public interface RepositorioEquipo extends JpaRepository<Equipo, Integer> {
     Optional<Equipo> findById(Integer id);
-    Optional<Equipo> findByNumeroSerie(Integer numeroSerie);
+    Optional<Equipo> findByNumeroSerie(String numeroSerie);
     List<Equipo>findByMarca(String marca);
     List<Equipo>findByModelo(String modelo);
     List<Equipo> findByTipo(String tipo);

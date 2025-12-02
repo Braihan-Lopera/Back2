@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface RepositorioFactura extends JpaRepository<Factura, Integer> {
-    Optional<Factura>findById(Integer id);
-    List<Factura>findByFechaEmision(LocalDate fechaEmision);
-    List<Factura> findByRangoFechas(LocalDate start, LocalDate end);
+
+    Optional<Factura> findById(Integer id);
+
+    List<Factura> findByFechaEmision(LocalDate fechaEmision);
+
+    List<Factura> findByFechaEmisionBetween(LocalDate fechaInicio, LocalDate fechaFin);
 }

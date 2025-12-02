@@ -18,6 +18,8 @@ public class Factura {
     private Integer id;
     @Column (name="fechaEmision", nullable = false, unique = false, length = 30)
     private LocalDate fechaEmision;
+    @Column(name = "rangoFechas", nullable = false, unique = false)
+    private LocalDate fechaFin;
     @Column (name="repuestos", nullable = false, unique = false)
     private String repuestos;
     @Column (name="estadoPago", nullable = false, unique = false, length = 30)
@@ -35,6 +37,6 @@ public class Factura {
 
     @OneToMany(mappedBy = "factura")
     @JsonManagedReference(value ="relacionfacturaventadetalle")
-    private VentaDetalle ventaDetalle;
+    private List<VentaDetalle> ventaDetalles;
 
 }

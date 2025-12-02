@@ -1,19 +1,22 @@
 package com.examen.back2.maps;
 
+import com.examen.back2.DTO.RegistroDTO;
 import com.examen.back2.models.Registro;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+import java.util.List;
+
+@Mapper(componentModel = "spring")
 public interface MapaRegistro {
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "problema", target = "problema")
-    @Mapping(source = "solucion", target = "solucion")
-    @Mapping(source = "fechaIngreso", target = "fechaIngreso")
-    @Mapping(source = "estado", target = "estado")
-    @Mapping(source = "cliente", target = "cliente")
-    @Mapping(source = "tecnico", target = "tecnico")
-    @Mapping(source = "equipo", target = "equipo")
-    @Mapping(source = "factura", target = "factura")
-    Registro RegistroToRegistroDTO(Registro registro);
+    @Mapping(source = "equipo.id", target = "equipoId")
+    @Mapping(source = "tecnico.id", target = "tecnicoId")
+    RegistroDTO registroToRegistroDTO(Registro registro);
+    
+    @Mapping(source = "equipoId", target = "equipo.id")
+    @Mapping(source = "tecnicoId", target = "tecnico.id")
+    Registro registroDTOToRegistro(RegistroDTO dto);
+    
+    List<RegistroDTO> listaToListDTO(List<Registro> lista);
+    List<Registro> listDTOToLista(List<RegistroDTO> dtos);
 }

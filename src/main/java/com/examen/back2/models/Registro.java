@@ -29,17 +29,17 @@ public class Registro {
     //relacion Equipo-Registro (1-N) lado N
     @ManyToOne
     @JoinColumn(name="fk_equipo")
-    @JsonBackReference (value = "relacionregistroequipo")
+    @JsonBackReference(value = "relacionequiporegistro")
     private Equipo equipo;
 
     //relacion Tecnico-Registro (1-N) lado N
     @ManyToOne
     @JoinColumn(name ="fk_tecnico")
-    @JsonBackReference(value = "relacionregistrotecnico")
+    @JsonBackReference(value = "relaciontecnicoregistro")
     private Tecnico tecnico;
 
     //relacion Registro-Factura (1-1)
     @OneToOne(mappedBy = "registro")
-    @JsonManagedReference (value = "relacionregistrofactura")
+    @JsonManagedReference(value = "relacionfacturaregistro")
     private Factura factura;
 }

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class RepuestoDTO {
     private Integer id;
     private String nombre;
-    private String codigo;
+    private String numeroSerie;
     private String descripcion;
     private Float precio;
     private Integer stock;

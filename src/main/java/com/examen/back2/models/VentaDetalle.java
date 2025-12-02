@@ -1,8 +1,8 @@
 package com.examen.back2.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.IdGeneratorType;
 
 @Data
 @Entity
@@ -19,10 +19,12 @@ public class VentaDetalle {
 
     @ManyToOne
     @JoinColumn(name = "fk_producto")
+    @JsonBackReference(value = "relacionproductoventadetalle")
     private Producto producto;
 
     @ManyToOne
     @JoinColumn(name = "fk_factura")
+    @JsonBackReference(value = "relacionfacturaventadetalle")
     private Factura factura;
 
 }

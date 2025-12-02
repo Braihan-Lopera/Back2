@@ -1,20 +1,15 @@
 package com.examen.back2.DTO;
 
-import com.examen.back2.models.Equipo;
-import com.examen.back2.models.Registro;
 import lombok.*;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class TecnicoDTO {
+    private Integer id;
     private String nombre;
     private String correo;
+    private String documento;
     private String celular;
     private String cargo;
-    private List<Registro> registros;
-    private Equipo equipo;
 }
